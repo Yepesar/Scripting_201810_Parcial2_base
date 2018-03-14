@@ -1,0 +1,40 @@
+1) Escogeria la que más se adapte a la situacion, ya que, ambas funciones pueden desenvolverse de forma distinta y es netamente necesario
+conocer la necesidad especifica del programa que usa el algoritmo y solo puede conocerse usando ambas y haciendo testing.
+
+2)
+	a) Para que los corredores puedan consultar su posicion y su tiempo, se debe tener desde la misma clase corredor,
+	una variable que idique el tiempo que pasa entre la salida y la llegada a la meta. Para la posicion, se tiene una clase POSICION,
+	que contiene a todos los corredores y dependiendo de su distancia respecto a la meta, se encarga de asignarle a cada uno
+	un numero de 1 al maximo numero de corredores.La clase tambien
+	accede a cada uno de los corredores y guarda su tiempo en una variable que se va actualizando constantemente.
+	Ahora bien, la clase posicion hace uso de un singelton, en el cual almacena las posiciones y los tiempos de cada corredor.El singelton
+	se comunica con una clase HUD encargada de mostrar en pantalla estos datos en forma de tabla.
+	
+	b) Usaria bools a modo de banderas para acceder a un pool de objetos, para asi poner fichas nuevas en el tablero sin sacrificar
+	rendimiento del juego.
+	
+	c) Lo más rápido seria primero limitar las opciones a 2 y que estas lleven a otras 2 de las cuales 1 se comparten con el otro camino,
+	con el fin de hacer el prototipado más rapido.Para la programacion, se podria hacer de una forma muy rapida pero poco optima al
+	usar varias escenas y con un click cambie a otra(Dependiendo de la decision del jugador) y asi llegar a caminos distintos.
+
+	d) Usaria ambos, ya que, en un juego de este tipo hay vehiculos que son destruidos o dañados, entonces mientras el jugador se mueve,
+	los carros que resulten ilesos se reciclan con pooling, pero, si el jugador destruye otro vehiculo, se usa el factory para instanciar el vehiculo
+	dañado.
+
+3) Utilizaria una cola, ya que, esta puede ir creciendo mientras llegan más clientes conservando su orden, y para los productos, usaria una
+pila o incluso un pooling, ya que la entrega no sigue ningun orden y puede entregarse en cualquier momento.
+
+4) Entonces, primero tendriamos una clase padre abstracta llamada "PERSONAJE" que contiene lo que seria el nombre que el jugador le
+asigna a su personaje y funciones basicas como lo son la administracion del inventario, la comunicacion, la subida de nivel, etc.
+A esta clase le siguen 3 clases abstractas "HUMANO" , "ELFO" , "ORCO" las cuales contienen las variables basicas de cada raza como lo son 
+su vida y su resistencia y funciones como caminar, correr, saltar, que pueden variar segun la variable "sexo", que determina el sexo del
+personaje.Estas clases tienen varias clases  hijas en comun "Guerrero" "Cazador" "Brujo", las cuales serian las "clases" comunes 
+que pueden tener todas las razas, y de nuevo, cada una con sus variables basicas y sus clases como atacar.Para las "clases" unicas de cada raza,
+se tendrian clases hijas unicas de cada una "Paladin"(humano) , "Druida"(elfo) , "Berserker"(orco) y de nuevo, cada una tendria sus variables basicas
+y sus funciones.
+
+PERSONAJE:
+	
+	HUMANO: PALADIN, GUERRERO, CAZADOR,BRUJO
+	ELFO: DRUIDA, GUERRERO, CAZADOR,BRUJO
+	ORCO: BERSERKER, GUERRERO, CAZADOR, BRUJO
