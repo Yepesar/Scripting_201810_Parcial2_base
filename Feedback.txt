@@ -1,0 +1,27 @@
+Componente Teórico (1.25)
+
+1. Ojo que el enunciado ya te estaba diciendo cuál era la situación (ordenamiento de datos), así que ambos algoritmos se iban a medir en la misma situación. Por definición, el algoritmo de orden cuadrático es más rápido que el de orden factorial, dados los mismos datos. (0.0)
+
+2. a) Más o menos. Si bien lo más acertado sería usar un singleton, hay que revisar es cómo definís las clases. "Posición" qué es? Ubicación en la pista, o clasificación en la carrera? Porque por lo que decís que hace (asignarle un número de acuerdo a su posición de carrera), suena más a una propiedad de la clase Corredor que a una clase sola. Recordá que las clases definen estado y comportamiento, así que qué atributos tendría esta clase? Si es algo que "contiene a los corredores" y "determina su posición" sería más un "árbitro". (0.15)
+2. b) Usar un pool te condicionaría a cuántas fichas de un mismo tipo podrían existir en pantalla al tiempo. Si usaras siempre la creación de última instancia del pool, le quitarías toda la gracia al patrón, por lo que, quizá, es conveniente apoyarse de un factory en algún punto. (0.15)
+2. c) No veo cómo limitar las opciones a esquemas binarios (de a dos opciones) haga más rápido un prototipo de visual novel. Si podés prototipar de a dos opciones, podés prototipar cualquier cantidad n de opciones. Aquí simplemente había que decir que se puede obviar cualquier patrón de software e irse por muchos 'if'. No se preguntó sobre cómo funcionaría la visual novel. (0.05)
+2. d) OK (0.25)
+
+3. El pooling no es una estructura de datos. Ojo con eso. (0.35)
+
+4. Eso se hubiera visto hermoso en UML (0.3)
+
+Componente Práctico (1.3)
+1. El único detalle es que usaste un string para la configuración de los tipos. Pude poner "DEBIL" y "debil" alterando el código y dañé el juego. No es que usar un enumerado blinde el juego del ocioso que le meta la mano al código, pero dado que estás quemando los valores en el código, se sufre del mismo problema que si los cuadrara desde el inspector (error humano). Adicionalmente, los enemigos disparan sin importar si el jugador no está al frente, y el mandato era que sólo dispararan cuando el jugador estuviera frente a ellos (0.35)
+
+2. Era obvio utilizar un singleton para el controlador de puntos. Si bien el enemigo encuentra el componente en la cámara, estas son cosas que, naturalmente, no irían en un objeto de la escena porque podría destruirse. Reduzco 0.35 por obviar el patrón de diseño. (0.4)
+
+3. Hay potenciales casos en que el spawner no genera enemigos (ej. en la primera fase, estás esperando un número entre 0 y 10, y tus condiciones para spawnear son que el número sea < 8.5F y != 0.5F; >9F y != 0.5F; y <= 0.5F. Si el generador devuelve cualquier número entre 0.85F y 9F mientras el jugador tiene menos de 200 pts, hay un 5% de probabilidades de que tu código no genere enemigos (0.55)
+
+4. El juego reinicia cuando el jugador pierde. No es lo que se pidió (0.0)
+
+Total: 2.55
+
+Notas:
+* Ojo con la identificación y el nombramiento de clases. Hacé el ejercicio de llevar el caso a la vida real. Para el caso particular del juego de carreras, hay algo en las competencias de carreras que se llame "posición" y sea algo diferente a un número que se le otorga a los competidores que, además, haga algo? Las clases se mapean a *entidades del mundo* que tienen posibles estados y que pueden hacer cosas y eso incide en su nombramiento. Las clases suelen nombrarse como sustantivos, mientras que los adjetivos (como "posición") suelen ser los atributos.
+* Complicaste mucho la lógica del disparo, y eso termina haciendo que se sienta que debo esperar mucho tiempo para que salga el disparo, en vez de esperar para volver a un nuevo disparo.
